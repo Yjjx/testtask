@@ -23,7 +23,7 @@ namespace ClassLibrary1
             else
             {
                 var PlayerGet = Player.Get(sender);
-                PlayerGet.DisplayNickname = nick; //присваеваем имя
+                PlayerGet.DisplayNickname = nick; //присваеваем имя 
                 response = "Успешно";
                 return true;
             }
