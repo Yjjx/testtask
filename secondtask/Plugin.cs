@@ -21,10 +21,8 @@ namespace secondtask
 
         private void Player_TriggeringTesla(Exiled.Events.EventArgs.Player.TriggeringTeslaEventArgs ev)
         {
-            var curitem = ev.Player.CurrentItem;
-            if (
-                Config.Items.Contains(curitem)
-                )
+            var curitem = ev.Player.CurrentItem.Type;
+            if (ev.Player.CurrentItem != null && Config.Items.Contains(ev.Player.CurrentItem.Type))
             {
                 ev.IsTriggerable = false;
             }
