@@ -24,7 +24,7 @@ namespace secondtask
             var curitem = ev.Player.CurrentItem.Type;
             if (ev.Player.CurrentItem != null && Config.Items.Contains(ev.Player.CurrentItem.Type))
             {
-                ev.IsAllowed = false;
+                ev.IsTriggerable = false;
             }
         }
     }
