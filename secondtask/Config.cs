@@ -8,7 +8,7 @@ namespace secondtask
 {
     public class Config : IConfig
     {
-        public List<Exiled.API.Features.Items.Item> Items { get; set; } = new List<Exiled.API.Features.Items.Item>((int)ItemType.KeycardO5);
+        public List<ItemType> Items { get; set; } = new List<ItemType> { ItemType.KeycardO5 };
         public bool IsEnabled { get; set; } = true;
         public bool Debug { get; set; } = false;
     }

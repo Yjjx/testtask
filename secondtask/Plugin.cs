@@ -21,12 +21,12 @@ namespace secondtask
 
         private void Player_TriggeringTesla(Exiled.Events.EventArgs.Player.TriggeringTeslaEventArgs ev)
         {
-            var curitem = ev.Player.CurrentItem;
+            var curitem = ev.Player.CurrentItem.Type;
             if (
                 Config.Items.Contains(curitem)
                 )
             {
-                ev.IsTriggerable = false;
+                ev.IsAllowed = false;
             }
         }
     }
