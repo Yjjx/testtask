@@ -10,6 +10,7 @@
     <RootNamespace>secondtask</RootNamespace>
     <AssemblyName>secondtask</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>9.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -91,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers.cs" />
     <Compile Include="reportlist.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Plugin.cs" />
