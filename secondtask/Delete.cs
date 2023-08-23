@@ -8,7 +8,7 @@ using Exiled.Events.Handlers;
 namespace secondtask
 {
     [CommandHandler(typeof(RemoteAdminCommandHandler))]
-    internal class Delete
+    internal class Delete : ICommand
     {
         public string Command => "delete";
         public string[] Aliases => new string[] { "del", "deleteall" };

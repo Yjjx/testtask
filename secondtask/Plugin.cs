@@ -15,6 +15,7 @@ namespace secondtask
         public override string Prefix => "ftt";
         public static Plugin Instance;
         public static Report report = new Report();
+
         public override void OnEnabled()
         {
             base.OnEnabled();
@@ -40,6 +41,22 @@ namespace secondtask
                 {
                     lift.TryStart(level, true);
                 }
+            }
+        }
+        public class Report
+        {
+            public List<string> reports = new List<string>();
+            public void SendReport(Exiled.Events.EventArgs.Player.LocalReportingEventArgs report)
+            {
+                string reporting = $"Игрок [{report.Player.Id}] {report.Player.Nickname} отправил репорт на игрока [{report.Target.Id}] {report.Target.Nickname} Причина: {report.Reason}";
+                foreach (var player in Player.List)
+                {
+                    if (player.RemoteAdminAccess)
+                    {
+                        player.Broadcast(7, reporting);
+                    }
+                }
+                reports.Add(reporting);
             }
         }
 
