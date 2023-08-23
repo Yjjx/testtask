@@ -94,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Delete.cs" />
-    <Compile Include="Report.cs" />
     <Compile Include="reportlist.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Plugin.cs" />
