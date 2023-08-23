@@ -14,7 +14,7 @@ namespace secondtask
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            response = null;
+            response = string.Join("\n", Plugin.report.reports);
             return true;
         }
     }

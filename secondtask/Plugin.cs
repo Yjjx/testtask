@@ -15,6 +15,7 @@ namespace secondtask
         public override string Prefix => "ftt";
         public static Plugin Instance;
         private Handler handler;
+        public static Report report = new Report();
         public override void OnEnabled()
         {
             base.OnEnabled();
