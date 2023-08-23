@@ -14,7 +14,6 @@ namespace secondtask
         public override string Author => "yjjx";
         public override string Prefix => "ftt";
         public static Plugin Instance;
-        private Handler handler;
         public static Report report = new Report();
         public override void OnEnabled()
         {
@@ -22,22 +21,27 @@ namespace secondtask
             Log.Info("secondtask is enabled");
             Exiled.Events.Handlers.Player.TriggeringTesla += Player_TriggeringTesla;
             Exiled.Events.Handlers.Map.ExplodingGrenade += Map_ExplodingGrenade;
-            Exiled.Events.Handlers.Player.Died += handler.OnDied;
-            Exiled.Events.Handlers.Player.Spawned += handler.OnSpawned;
-            Exiled.Events.Handlers.Server.WaitingForPlayers += handler.OnWaiting;
-            Exiled.Events.Handlers.Server.RoundEnded += handler.OnRoundEnd;
         }
-            private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs ev)
+            private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs granate)
             {
-                foreach (Lift lift in Lift.List)
+            var lift = Exiled.API.Features.Lift.Get(granate.Position);
+            if (lift != null)
+            {
+                int level = lift.CurrentLevel;
+                if (level == 1)
                 {
-                    if (!((ev.Position - lift.Position).sqrMagnitude < 13)) continue;
-                    Random random = new Random();
-                    var level = lift.CurrentLevel;
-                    lift.TryStart(-level); break;
-
+                    level = 0;
+                }
+                else
+                {
+                    level = 1;
+                }
+                if (UnityEngine.Random.Range(0, 101) <= 50)
+                {
+                    lift.TryStart(level, true);
                 }
             }
+        }
 
             private void Player_TriggeringTesla(Exiled.Events.EventArgs.Player.TriggeringTeslaEventArgs ev)
             {
