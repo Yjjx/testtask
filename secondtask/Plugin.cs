@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Exiled.Events.EventArgs.Player;
 using Exiled.Events.EventArgs.Server;
 using System.Runtime.InteropServices;
+using Exiled.API.Enums;
 
 namespace secondtask
 {
@@ -32,21 +33,25 @@ namespace secondtask
 
         private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs granate)
             {
-            var lift = Exiled.API.Features.Lift.Get(granate.Position);
-            if (lift != null)
+            var IsHE = ProjectileType.FragGrenade;
+            if (IsHE == ProjectileType.FragGrenade)
             {
-                int level = lift.CurrentLevel;
-                if (level == 1)
+                var lift = Exiled.API.Features.Lift.Get(granate.Position);
+                if (lift != null)
                 {
-                    level = 0;
-                }
-                else
-                {
-                    level = 1;
-                }
-                if (UnityEngine.Random.Range(0, 101) <= 50)
-                {
-                    lift.TryStart(level, true);
+                    int level = lift.CurrentLevel;
+                    if (level == 1)
+                    {
+                        level = 0;
+                    }
+                    else
+                    {
+                        level = 1;
+                    }
+                    if (UnityEngine.Random.Range(0, 101) <= 50)
+                    {
+                        lift.TryStart(level, true);
+                    }
                 }
             }
         }
