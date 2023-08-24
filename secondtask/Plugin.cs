@@ -6,6 +6,7 @@ using Exiled.Events.EventArgs.Player;
 using Exiled.Events.EventArgs.Server;
 using System.Runtime.InteropServices;
 using Exiled.API.Enums;
+using Exiled.API.Features.Pickups.Projectiles;
 
 namespace secondtask
 {
@@ -33,8 +34,7 @@ namespace secondtask
 
         private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs granate)
             {
-            var IsHE = ProjectileType.FragGrenade;
-            if (IsHE == ProjectileType.FragGrenade)
+            if (granate.Projectile.Info.ItemId == ItemType.GrenadeHE)
             {
                 var lift = Exiled.API.Features.Lift.Get(granate.Position);
                 if (lift != null)
