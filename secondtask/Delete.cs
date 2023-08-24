@@ -15,9 +15,9 @@ namespace secondtask
         public string Description => "Удаляет предметы и труппы в радиусе";
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            var PlayerGet = Exiled.API.Features.Player.Get(sender);
-            if (float.TryParse(string.Join("", arguments), out float radius))
+            if (arguments.Count == 1 && int.TryParse(arguments.At(0), out var radius))
             {
+                var PlayerGet = Exiled.API.Features.Player.Get(sender);
                 Vector3 position = PlayerGet.Position;
                 int rdcount = 0;
                 int itemcount = 0;
@@ -42,9 +42,9 @@ namespace secondtask
             }
             else
             {
-                response = "delete [радиус]";
+                response = "Введите число";
                 return false;
             }
+            }
         }
-    }
 }
