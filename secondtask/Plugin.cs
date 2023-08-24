@@ -22,8 +22,15 @@ namespace secondtask
             Log.Info("secondtask is enabled");
             Exiled.Events.Handlers.Player.TriggeringTesla += Player_TriggeringTesla;
             Exiled.Events.Handlers.Map.ExplodingGrenade += Map_ExplodingGrenade;
+            Exiled.Events.Handlers.Server.WaitingForPlayers += Server_WaitingForPlayers;
         }
-            private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs granate)
+
+        private void Server_WaitingForPlayers()
+        {
+            report.reports.Clear();
+        }
+
+        private void Map_ExplodingGrenade(ExplodingGrenadeEventArgs granate)
             {
             var lift = Exiled.API.Features.Lift.Get(granate.Position);
             if (lift != null)
@@ -60,7 +67,7 @@ namespace secondtask
             }
         }
 
-            private void Player_TriggeringTesla(Exiled.Events.EventArgs.Player.TriggeringTeslaEventArgs ev)
+        private void Player_TriggeringTesla(Exiled.Events.EventArgs.Player.TriggeringTeslaEventArgs ev)
             {
                 var curitem = ev.Player.CurrentItem.Type;
                 if (ev.Player.CurrentItem != null && Config.Items.Contains(ev.Player.CurrentItem.Type))
