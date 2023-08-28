@@ -38,6 +38,10 @@ namespace _3test
                 {
                     break;
                 }
+                if (Warhead.IsDetonated)
+                {
+                    break;
+                }
                 else
                 {
                     Warhead.Start();
