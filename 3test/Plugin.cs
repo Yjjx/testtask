@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Features;
+using Hazards;
 using PlayerRoles;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,15 @@ namespace _3test
             base.OnEnabled();
             Log.Info("ttt is enabled");
             Exiled.Events.Handlers.Player.Died += Player_Died;
+            Exiled.Events.Handlers.Player.EnteringEnvironmentalHazard += Player_EnteringEnvironmentalHazard;
+        }
+
+        private void Player_EnteringEnvironmentalHazard(Exiled.Events.EventArgs.Player.EnteringEnvironmentalHazardEventArgs ev)
+        {
+            if (ev.EnvironmentalHazard is SinkholeEnvironmentalHazard)
+            {
+                ev.Player.RandomTeleport(typeof(Room));
+            }
         }
 
         private void Player_Died(Exiled.Events.EventArgs.Player.DiedEventArgs ev)
