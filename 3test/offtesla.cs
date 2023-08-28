@@ -1,6 +1,9 @@
 ﻿using CommandSystem;
+using Exiled.API.Enums;
 using Exiled.API.Features;
+using MapGeneration;
 using MEC;
+using PluginAPI.Core.Zones.Heavy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +31,17 @@ namespace _3test
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             var PlayerGet = Player.Get(sender);
-            PlayerGet.CurrentRoom.TeslaGate.InactiveTime = 60;
-            response = "успешно";
-            return true;
+            if (PlayerGet.CurrentRoom.Type != RoomType.HczTesla)
+            {
+                response = "Теслы рядом нет";
+                return false;
+            }
+            else
+            {
+                PlayerGet.CurrentRoom.TeslaGate.InactiveTime = 60;
+                response = "успешно";
+                return true;
+            }
         }
     }
 }
