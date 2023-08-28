@@ -7,6 +7,9 @@ using Exiled.Events.EventArgs.Server;
 using System.Runtime.InteropServices;
 using Exiled.API.Enums;
 using Exiled.API.Features.Pickups.Projectiles;
+using Exiled.API.Features.Roles;
+using PlayerRoles;
+using PluginAPI.Roles;
 
 namespace secondtask
 {
