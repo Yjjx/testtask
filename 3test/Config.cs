@@ -18,6 +18,6 @@ namespace _3test
         [Description("Шанс телепорта в случайную комнату после 914")]
         public int CTp { get; set; } = 50;
         [Description("Список негативных эффектов")]
-        public List<EffectType> NEffect { get; set; } = new List<EffectType> { };
+        public List<EffectType> NEffect { get; set; } = new List<EffectType> { EffectType.Bleeding };
     }
 }
