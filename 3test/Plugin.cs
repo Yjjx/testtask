@@ -107,7 +107,7 @@ namespace _3test
         {
             if (ev.EnvironmentalHazard is SinkholeEnvironmentalHazard && !ev.Player.IsScp)
             {
-                ev.Player.Teleport(Room.Random().Position);
+                ev.Player.RandomTeleport(typeof(Room));
             }
         }
 
