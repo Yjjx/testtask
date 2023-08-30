@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="hint.cs" />
     <Compile Include="offtesla.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Config.cs" />

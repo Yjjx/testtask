@@ -20,11 +20,31 @@ namespace _3test
             Log.Info("ttt is enabled");
             Exiled.Events.Handlers.Player.Died += Player_Died;
             Exiled.Events.Handlers.Player.EnteringEnvironmentalHazard += Player_EnteringEnvironmentalHazard;
+            Exiled.Events.Handlers.Scp914.UpgradingPlayer += Scp914_UpgradingPlayer;
+        }
+
+        private void Scp914_UpgradingPlayer(Exiled.Events.EventArgs.Scp914.UpgradingPlayerEventArgs ev)
+        {
+            var dmg = Config.CDamage;
+            var efct = Config.CEffect;
+            var tp = Config.CTp;
+            if (UnityEngine.Random.Range(0, 100) < dmg)
+            {
+                ev.Player.Hurt(UnityEngine.Random.Range(0, 150));
+            }
+            if (UnityEngine.Random.Range(0, 100) < tp)
+            {
+                ev.Player.RandomTeleport(typeof(Room));
+            }
+            if (UnityEngine.Random.Range(0,100) < efct)
+            {
+                ev.Player.EnableEffect(Config.NEffect.RandomItem());
+            }
         }
 
         private void Player_EnteringEnvironmentalHazard(Exiled.Events.EventArgs.Player.EnteringEnvironmentalHazardEventArgs ev)
         {
-            if (ev.EnvironmentalHazard is SinkholeEnvironmentalHazard)
+            if (ev.EnvironmentalHazard is SinkholeEnvironmentalHazard && !ev.Player.IsScp)
             {
                 ev.Player.RandomTeleport(typeof(Room));
             }
